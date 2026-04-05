@@ -1291,6 +1291,37 @@ function initWavyText() {
       link.appendChild(span);
     });
     link.classList.add('wavy-link');
+    link.classList.add('wavy-link');
+  });
+}
+
+function initHamburger() {
+  const hamburgers = document.querySelectorAll('.js-hamburger');
+  const overlay = document.querySelector('.js-mobile-overlay');
+  const closeBtn = document.querySelector('.js-mobile-close');
+
+  if (!overlay) return;
+
+  hamburgers.forEach(btn => {
+    btn.addEventListener('click', () => {
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    });
+  }
+
+  const links = overlay.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    });
   });
 }
 
@@ -1302,6 +1333,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroSparkles();
   initTapBursts();
   initWavyText();
+  initHamburger();
   bindUI();
   updateCartUI();
   initHeroParallax();
