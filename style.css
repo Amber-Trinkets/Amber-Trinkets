@@ -2121,18 +2121,37 @@ body.has-custom-cursor * {
 .hamburger {
   display: none;
   flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 46px;
+  height: 46px;
+  background-color: rgba(247, 186, 203, 0.25); /* Soft pastel pink container */
+  border-radius: 50%;
   cursor: pointer;
   z-index: 1001;
+  transition: transform 0.3s ease;
+}
+.hamburger:active {
+  transform: scale(0.92);
 }
 .hamburger span {
   display: block;
-  height: 2px;
+  height: 2.5px;
   background-color: var(--text-main);
-  border-radius: 2px;
+  border-radius: 20px;
   transition: all 0.3s ease;
+  width: 22px;
+}
+.hamburger span:nth-child(1) {
+  width: 12px;
+  align-self: flex-end;
+  margin-right: 12px;
+}
+.hamburger span:nth-child(3) {
+  width: 12px;
+  align-self: flex-start;
+  margin-left: 12px;
 }
 
 .mobile-overlay {
