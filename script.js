@@ -150,11 +150,24 @@ function updateCartUI() {
 
   cartCountElement.innerText = String(getTotalQuantity());
 
+  const checkoutBtns = document.querySelectorAll('.js-checkout');
+  
   if (cart.length === 0) {
     cartContainer.innerHTML = '<p class="empty-cart-msg">Your bag is currently empty.</p>';
     cartTotalElement.innerText = '₹ 0';
+    checkoutBtns.forEach(btn => {
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+      btn.style.cursor = 'not-allowed';
+    });
     return;
   }
+
+  checkoutBtns.forEach(btn => {
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+  });
 
   let cartHTML = '';
   let total = 0;
@@ -923,6 +936,87 @@ function initSmoothScrollAnchors() {
   });
 }
 
+function initPreloader() {
+  const isLite = document.body.classList.contains('perf-lite');
+  const preloader = document.getElementById('awwwards-preloader');
+  if (!preloader || isLite) {
+    document.body.classList.add('is-ready', 'is-loaded');
+    return;
+  }
+  
+  // Bring text in
+  setTimeout(() => {
+    document.body.classList.add('is-ready');
+  }, 100);
+
+  // Slide preloader up
+  setTimeout(() => {
+    document.body.classList.add('is-loaded');
+  }, 1200);
+
+  // Clean up
+  setTimeout(() => {
+    preloader.remove();
+  }, 2200);
+}
+
+function initAwwwardsMagnetic() {
+  const magnets = document.querySelectorAll('.magnetic-btn, .nav-links a');
+  const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+  if(isCoarse) return; // Don't run on mobile touch
+
+  magnets.forEach(btn => {
+    btn.addEventListener('mousemove', function(e) {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      this.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      this.style.transition = 'transform 0.1s ease-out';
+    });
+
+    btn.addEventListener('mouseleave', function(e) {
+      this.style.transform = `translate(0px, 0px)`;
+      this.style.transition = 'transform 0.5s cubic-bezier(0.77, 0, 0.175, 1)';
+    });
+  });
+}
+
+function initLiquidResin() {
+  const ambientTurb = document.querySelector('#ambient-turbulence');
+  const hoverTurb = document.querySelector('#resin-turbulence');
+  const displacement = document.querySelector('#resin-displacement');
+  if (!ambientTurb) return;
+
+  let p = 0;
+  function render() {
+    p += 0.005;
+    // Ambient slow drift
+    if (ambientTurb) ambientTurb.setAttribute('baseFrequency', `0.005 ${0.008 + Math.sin(p) * 0.002}`);
+    
+    // Fast liquid ripples for hover states
+    if (hoverTurb) hoverTurb.setAttribute('baseFrequency', `0.012 ${0.015 + Math.cos(p * 2) * 0.005}`);
+    
+    // Pulse the exact displacement scale
+    if(displacement) displacement.setAttribute('scale', `${25 + Math.sin(p * 3) * 5}`);
+    
+    requestAnimationFrame(render);
+  }
+  render();
+}
+
+function updateNavOnScroll() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+      document.body.classList.add('is-scrolled');
+    } else {
+      document.body.classList.remove('is-scrolled');
+    }
+  }, { passive: true });
+}
+
 function bindUI() {
   document.querySelectorAll('.js-cart-toggle').forEach((element) => {
     element.addEventListener('click', (event) => {
@@ -1208,12 +1302,17 @@ function initCustomCursor() {
 
   interactables.forEach(el => {
     el.addEventListener('mouseenter', () => {
-      cursor.classList.add('is-hovering');
-      follower.classList.add('is-hovering');
+      if (el.closest('.product-image') || el.closest('.new-collection__media') || el.closest('.latest-launch__media') || el.closest('.category-image-wrapper')) {
+        cursor.classList.add('is-viewing');
+        follower.classList.add('is-viewing');
+      } else {
+        cursor.classList.add('is-hovering');
+        follower.classList.add('is-hovering');
+      }
     });
     el.addEventListener('mouseleave', () => {
-      cursor.classList.remove('is-hovering');
-      follower.classList.remove('is-hovering');
+      cursor.classList.remove('is-hovering', 'is-viewing');
+      follower.classList.remove('is-hovering', 'is-viewing');
     });
   });
 }
@@ -1291,7 +1390,6 @@ function initWavyText() {
       link.appendChild(span);
     });
     link.classList.add('wavy-link');
-    link.classList.add('wavy-link');
   });
 }
 
@@ -1326,6 +1424,10 @@ function initHamburger() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initLiquidResin();
+  updateNavOnScroll();
+  initPreloader();
+  initAwwwardsMagnetic();
   loadCart();
   initPerformanceMode();
   initFallingPetals();

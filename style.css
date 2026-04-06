@@ -301,6 +301,18 @@ body.perf-lite nav {
   font-size: 1.8rem;
   letter-spacing: 2px;
   color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo .logo-img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(247, 186, 203, 0.6);
+  flex-shrink: 0;
 }
 
 .nav-links {
@@ -2121,18 +2133,37 @@ body.has-custom-cursor * {
 .hamburger {
   display: none;
   flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 46px;
+  height: 46px;
+  background-color: rgba(247, 186, 203, 0.25); /* Soft pastel pink container */
+  border-radius: 50%;
   cursor: pointer;
   z-index: 1001;
+  transition: transform 0.3s ease;
+}
+.hamburger:active {
+  transform: scale(0.92);
 }
 .hamburger span {
   display: block;
-  height: 2px;
+  height: 2.5px;
   background-color: var(--text-main);
-  border-radius: 2px;
+  border-radius: 20px;
   transition: all 0.3s ease;
+  width: 22px;
+}
+.hamburger span:nth-child(1) {
+  width: 12px;
+  align-self: flex-end;
+  margin-right: 12px;
+}
+.hamburger span:nth-child(3) {
+  width: 12px;
+  align-self: flex-start;
+  margin-left: 12px;
 }
 
 .mobile-overlay {
@@ -2234,4 +2265,124 @@ body.has-custom-cursor * {
   .nav-links {
     gap: 1.5rem; /* Tighter gap so cart and hamburger fit next to logo */
   }
+
+  /* Floating Cart Mobile Optimization */
+  .cart-icon {
+    position: fixed !important;
+    bottom: 2rem;
+    right: 1.5rem;
+    width: 65px;
+    height: 65px;
+    background-color: var(--text-main);
+    color: transparent !important;
+    border-radius: 50%;
+    box-shadow: 0 10px 25px rgba(247, 186, 203, 0.4);
+    z-index: 1000;
+    border: none;
+    font-size: 0;
+    line-height: 0; 
+    text-indent: -9999px; /* Push hidden text nodes out of frame */
+    display: block;
+  }
+  .cart-icon::before {
+    content: ''; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -46%); /* Centered & visually aligned */
+    width: 28px;
+    height: 28px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z' /%3E%3C/svg%3E");
+    background-size: cover;
+  }
+  .cart-icon span {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: var(--pastel-rose);
+    color: var(--text-main) !important;
+    font-size: 14px;
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--white);
+    text-indent: 0; /* Bring the badge number back */
+  }
+}
+
+/* === AWWWARDS LEVEL STYLES === */
+#awwwards-preloader { position: fixed; z-index: 10000; inset: 0; background: var(--bg-main); display: flex; align-items: center; justify-content: center; transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+body.is-loaded #awwwards-preloader { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); pointer-events: none; }
+.preloader-text { display: block; font-family: 'Playfair Display', serif; font-size: 3.5rem; letter-spacing: 2px; color: var(--text-main); transform: translateY(100%); opacity: 0; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.2s, opacity 0.8s ease 0.2s; }
+body.is-ready .preloader-text { transform: translateY(0); opacity: 1; }
+.editorial-marquee { width: 100vw; margin-left: calc(-50vw + 50%); background: var(--text-main); color: var(--pastel-lemon); padding: 1.5rem 0; overflow: hidden; display: flex; white-space: nowrap; font-family: 'Montserrat', sans-serif; font-weight: 500; letter-spacing: 4px; transform: rotate(-2deg) scale(1.05); margin-bottom: 4rem; z-index: 10; position: relative; }
+.marquee-track { display: flex; animation: marqueeScroll 25s linear infinite; }
+.marquee-track span { padding-right: 2rem; }
+@keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.stagger-up { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; transition-delay: var(--delay, 0s); }
+body.is-loaded .stagger-up { opacity: 1; transform: translateY(0); }
+.custom-cursor-follower.is-viewing { width: 80px; height: 80px; background: rgba(255, 255, 255, 0.95); mix-blend-mode: normal; display: flex; align-items: center; justify-content: center; border:none; }
+.custom-cursor.is-viewing::after { opacity: 0; transform: scale(0); }
+.custom-cursor-follower.is-viewing::after { content: 'VIEW'; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; color: var(--text-main); position: absolute; }
+/* === FLOATING LIQUID GLASS NAV === */
+nav { position: fixed !important; top: 25px !important; left: 50% !important; transform: translateX(-50%) !important; width: auto !important; min-width: 60vw; background: rgba(255, 255, 255, 0.45) !important; backdrop-filter: blur(20px) saturate(160%) !important; -webkit-backdrop-filter: blur(20px) saturate(160%) !important; border-radius: 40px !important; box-shadow: 0 15px 35px rgba(163, 145, 178, 0.15), inset 0 0 0 1px rgba(255,255,255,0.7) !important; border: none !important; transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important; z-index: 9998 !important; padding: 0.6rem 2.5rem !important; }
+body.is-scrolled nav { top: 10px !important; min-width: 45vw; background: rgba(255, 255, 255, 0.75) !important; box-shadow: 0 10px 25px rgba(163, 145, 178, 0.1), inset 0 0 0 1px rgba(255,255,255,0.9) !important; }
+.nav-links { gap: 2rem !important; } .nav-links a { font-size: 0.8rem; letter-spacing: 2px; font-weight: 600; }
+.cart-icon { border-bottom: none !important; padding: 0.4rem 1.2rem !important; background: var(--text-main); color: var(--white) !important; border-radius: 20px; transition: all 0.3s ease; } .cart-icon:hover { background: var(--pastel-rose) !important; color: var(--text-main) !important; }
+.hero__bg { filter: url(#liquid-ambient); } .u-3d-card img { transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease !important; } .u-3d-card.is-tilting img { filter: url(#liquid-resin); transform: scale(1.05); }
+.u-3d-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 30px rgba(0,0,0,0.15); pointer-events: none; z-index: 2; }
+
+/* Ensure SVG Filters never overlap visually */
+svg.liquid-resin-svg {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+  z-index: -9999 !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Fix liquid overlapping */
+body.is-loaded #awwwards-preloader,
+body.is-ready #awwwards-preloader.is-removing {
+    display: none !important;
+}
+
+/* Remove liquid ambient to prevent full page overflow on some browsers */
+.hero__bg {
+    filter: none !important;
+}
+
+@media (max-width: 900px) {
+  nav {
+    width: 90vw !important;
+    min-width: auto !important;
+    border-radius: 20px !important;
+    padding: 0.6rem 1.5rem !important;
+  }
+}
+
+/* Fix the shift-up caused by fixed nav */
+body {
+    padding-top: 90px;
+}
+
+/* Fix the shift-up caused by fixed nav, properly keeping background colors */
+body {
+    padding-top: 0 !important;
+}
+
+.page-header {
+    padding-top: 130px !important;
+}
+
+.hero {
+    padding-top: 130px !important;
 }

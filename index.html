@@ -38,18 +38,39 @@
 
 <body class="perf-lite">
 
+    <!-- Global Liquid Resin Filter -->
+    <svg width="0" height="0" class="liquid-resin-svg" style="position:absolute;z-index:-1;pointer-events:none;">
+        <filter id="liquid-resin">
+            <feTurbulence id="resin-turbulence" type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="3" result="NOISE"></feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="0" xChannelSelector="R" yChannelSelector="G" id="resin-displacement"></feDisplacementMap>
+        </filter>
+        <filter id="liquid-ambient">
+            <feTurbulence id="ambient-turbulence" type="fractalNoise" baseFrequency="0.005 0.008" numOctaves="2" result="NOISE"></feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="80" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+        </filter>
+    </svg>
+
+    <!-- Premium Preloader -->
+    <div id="awwwards-preloader">
+        <div class="preloader-content">
+            <span class="preloader-text">Amber Trinkets</span>
+        </div>
+    </div>
+
     <div class="scroll-progress" aria-hidden="true">
         <div class="scroll-progress__bar" id="scroll-progress-bar"></div>
     </div>
 
     <nav>
-        <a href="index.html" class="brand-logo">Amber Trinkets</a>
+        <a href="index.html" class="brand-logo"><img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775392617/Gemini_Generated_Image_m9866qm9866qm986_qaqjsb.png" alt="Amber Trinkets Logo" class="logo-img">Amber Trinkets</a>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="collection.html">Collection</a>
-            <a class="cart-icon js-cart-toggle">Cart (<span id="cart-count">0</span>)</a>
+            <a href="index.html#our-exclusive">Our Exclusive</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="#" class="cart-icon js-cart-toggle" role="button">Cart (<span id="cart-count">0</span>)</a>
         </div>
-        <div class="hamburger js-hamburger" aria-label="Toggle menu">
+        <div class="hamburger js-hamburger" aria-label="Toggle menu" role="button" tabindex="0">
             <span></span>
             <span></span>
             <span></span>
@@ -61,6 +82,8 @@
         <div class="mobile-menu">
             <a href="index.html">Home</a>
             <a href="collection.html">Collection</a>
+            <a href="index.html#our-exclusive">Our Exclusive</a>
+            <a href="index.html#contact">Contact</a>
         </div>
     </div>
 
@@ -90,12 +113,20 @@
         </div>
 
         <div class="hero__content">
-            <h1>Preserved in Time</h1>
-            <p>Discover our exclusive collection of luxury resin art. Handcrafted premium decor and jewelry that
+            <h1 class="stagger-up">Preserved in Time</h1>
+            <p class="stagger-up" style="--delay: 0.1s;">Discover our exclusive collection of luxury resin art. Handcrafted premium decor and jewelry that
                 captures the ephemeral beauty of nature.</p>
-            <a href="collection.html" class="btn btn-inline">Shop the Collection</a>
+            <a href="collection.html" class="btn btn-inline stagger-up magnetic-btn" style="--delay: 0.2s;">Shop the Collection</a>
         </div>
     </header>
+
+    <!-- Infinite Editorial Marquee -->
+    <div class="editorial-marquee">
+        <div class="marquee-track">
+            <span>RESIN ART &nbsp;✦&nbsp; HANDCRAFTED &nbsp;✦&nbsp; PRESERVED FLORALS &nbsp;✦&nbsp; EXCLUSIVE DROPS &nbsp;✦&nbsp; WORLDWIDE &nbsp;✦&nbsp;</span>
+            <span>RESIN ART &nbsp;✦&nbsp; HANDCRAFTED &nbsp;✦&nbsp; PRESERVED FLORALS &nbsp;✦&nbsp; EXCLUSIVE DROPS &nbsp;✦&nbsp; WORLDWIDE &nbsp;✦&nbsp;</span>
+        </div>
+    </div>
 
     <section class="new-collection" aria-labelledby="new-collection-title">
         <h2 class="section-title" id="new-collection-title">Just Dropped</h2>
@@ -158,7 +189,7 @@
         </div>
     </section>
 
-    <section class="latest-launch latest-launch--exclusive" aria-labelledby="exclusive-title">
+    <section class="latest-launch latest-launch--exclusive" id="our-exclusive" aria-labelledby="exclusive-title">
         <h2 class="section-title" id="exclusive-title">Our Exclusive</h2>
 
         <div class="latest-launch__wrap u-3d-stage">
