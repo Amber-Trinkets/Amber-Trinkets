@@ -2575,8 +2575,13 @@ body {
     text-align: center;
     box-sizing: border-box;
   }
-  .btn.btn-inline { width: auto !important; }
-  .cart-drawer, .contact-modal { width: 100vw !important; z-index: 10000 !important; }
+  .btn.btn-inline {
+    width: auto !important;
+  }
+  .contact-modal__primary.btn.btn-inline {
+    width: auto !important;
+  }
+  .cart-drawer, .contact-modal, .checkout-modal { width: 100vw !important; z-index: 10000 !important; }
   .cart-overlay, .modal-overlay { z-index: 9999 !important; }
 
   /* Mobile App-Like Dropdown Menu Fix */

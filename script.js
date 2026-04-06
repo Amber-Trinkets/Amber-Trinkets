@@ -369,16 +369,12 @@ function checkout() {
 
   if (note) note.textContent = '';
 
-
-
-  whatsappButton?.addEventListener(
-    'click',
-    () => {
+  if (whatsappButton) {
+    whatsappButton.onclick = () => {
       openInNewTab(whatsappUrl);
       setOpen?.(false);
-    },
-    { once: true },
-  );
+    };
+  }
 
   // Close cart drawer if it is open, then show checkout modal.
   const drawer = document.getElementById('cart-drawer');
