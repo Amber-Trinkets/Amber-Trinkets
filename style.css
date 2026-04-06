@@ -301,18 +301,6 @@ body.perf-lite nav {
   font-size: 1.8rem;
   letter-spacing: 2px;
   color: var(--text-main);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.brand-logo .logo-img {
-  width: 52px;
-  height: 52px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid rgba(247, 186, 203, 0.6);
-  flex-shrink: 0;
 }
 
 .nav-links {
@@ -2133,37 +2121,18 @@ body.has-custom-cursor * {
 .hamburger {
   display: none;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  width: 46px;
-  height: 46px;
-  background-color: rgba(247, 186, 203, 0.25); /* Soft pastel pink container */
-  border-radius: 50%;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
   cursor: pointer;
   z-index: 1001;
-  transition: transform 0.3s ease;
-}
-.hamburger:active {
-  transform: scale(0.92);
 }
 .hamburger span {
   display: block;
-  height: 2.5px;
+  height: 2px;
   background-color: var(--text-main);
-  border-radius: 20px;
+  border-radius: 2px;
   transition: all 0.3s ease;
-  width: 22px;
-}
-.hamburger span:nth-child(1) {
-  width: 12px;
-  align-self: flex-end;
-  margin-right: 12px;
-}
-.hamburger span:nth-child(3) {
-  width: 12px;
-  align-self: flex-start;
-  margin-left: 12px;
 }
 
 .mobile-overlay {
@@ -2264,52 +2233,5 @@ body.has-custom-cursor * {
 
   .nav-links {
     gap: 1.5rem; /* Tighter gap so cart and hamburger fit next to logo */
-  }
-
-  /* Floating Cart Mobile Optimization */
-  .cart-icon {
-    position: fixed !important;
-    bottom: 2rem;
-    right: 1.5rem;
-    width: 65px;
-    height: 65px;
-    background-color: var(--text-main);
-    color: transparent !important;
-    border-radius: 50%;
-    box-shadow: 0 10px 25px rgba(247, 186, 203, 0.4);
-    z-index: 1000;
-    border: none;
-    font-size: 0;
-    line-height: 0; 
-    text-indent: -9999px; /* Push hidden text nodes out of frame */
-    display: block;
-  }
-  .cart-icon::before {
-    content: ''; 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -46%); /* Centered & visually aligned */
-    width: 28px;
-    height: 28px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z' /%3E%3C/svg%3E");
-    background-size: cover;
-  }
-  .cart-icon span {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    background-color: var(--pastel-rose);
-    color: var(--text-main) !important;
-    font-size: 14px;
-    font-weight: bold;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid var(--white);
-    text-indent: 0; /* Bring the badge number back */
   }
 }
