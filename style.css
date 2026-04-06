@@ -307,11 +307,12 @@ body.perf-lite nav {
 }
 
 .brand-logo .logo-img {
-  width: 52px;
-  height: 52px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid rgba(247, 186, 203, 0.6);
+  border: 2px solid rgba(247, 186, 203, 0.75);
+  box-shadow: 0 4px 12px rgba(163, 145, 178, 0.2);
   flex-shrink: 0;
 }
 
@@ -2372,10 +2373,10 @@ body.is-scrolled nav {
     gap: 8px !important;
   }
   .brand-logo .logo-img {
-    width: 42px !important;
-    height: 42px !important;
+    width: 48px !important;
+    height: 48px !important;
     border-radius: 50% !important;
-    border: 3px solid rgba(247, 186, 203, 0.4) !important;
+    border: 3px solid rgba(247, 186, 203, 0.55) !important;
     padding: 2px !important;
   }
   .nav-links { gap: 0.8rem !important; display: flex; align-items: center; margin-right: 0; }
