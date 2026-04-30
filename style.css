@@ -304,6 +304,7 @@ body.perf-lite nav {
   display: flex;
   align-items: center;
   gap: 10px;
+  white-space: nowrap;
 }
 
 .brand-logo .logo-img {
@@ -392,7 +393,7 @@ body.perf-lite nav {
   opacity: 0;
   visibility: hidden;
   transition: 0.5s ease;
-  z-index: 1001;
+  z-index: 10001;
 }
 
 body.perf-lite .cart-overlay {
@@ -412,7 +413,7 @@ body.perf-lite .cart-overlay {
   max-width: 100%;
   height: 100%;
   background-color: var(--white);
-  z-index: 1002;
+  z-index: 10002;
   transition: right 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   box-shadow: -10px 0 30px var(--shadow-soft);
   border-radius: 30px 0 0 30px;
@@ -1425,9 +1426,9 @@ body.perf-lite .reveal-3d {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(44, 42, 41, 0.45);
-  backdrop-filter: blur(6px);
-  z-index: 1200;
+  background: rgba(44, 42, 41, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 10001;
 }
 
 body.perf-lite .modal-overlay {
@@ -1445,7 +1446,7 @@ body.perf-lite .modal-overlay {
   border: 1px solid var(--border-light);
   border-radius: 14px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
-  z-index: 1201;
+  z-index: 10002;
   padding: 1.75rem;
 }
 
@@ -1817,7 +1818,7 @@ body.perf-lite .product-image::after {
 
 /* --- Category page (products) --- */
 .breadcrumbs {
-  padding: 2rem 5% 0;
+  padding: 160px 5% 0;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -1998,7 +1999,7 @@ body.has-custom-cursor * {
   width: 24px;
   height: 24px;
   pointer-events: none;
-  z-index: 10000;
+  z-index: 100010;
   will-change: transform;
 }
 
@@ -2033,7 +2034,7 @@ body.has-custom-cursor * {
   background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.9) 0%, rgba(253, 238, 220, 0.4) 30%, rgba(255, 255, 255, 0.1) 80%);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 100009;
   will-change: transform, width, height, box-shadow;
   transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), height 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, background 0.3s ease;
   box-shadow: inset -2px -2px 6px rgba(0, 0, 0, 0.05), inset 2px 2px 6px rgba(255, 255, 255, 0.9), 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -2172,7 +2173,7 @@ body.has-custom-cursor * {
   inset: 0;
   background-color: rgba(255, 251, 251, 0.98);
   backdrop-filter: blur(15px);
-  z-index: 1000;
+  z-index: 10003;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2185,7 +2186,7 @@ body.has-custom-cursor * {
 .mobile-overlay.is-open {
   opacity: 1;
   pointer-events: auto;
-  z-index: 1005; 
+  z-index: 10004; 
 }
 
 .mobile-menu {
@@ -2477,11 +2478,11 @@ body {
 }
 
 .page-header {
-    padding-top: 130px !important;
+    padding-top: 160px !important;
 }
 
 .hero {
-    padding-top: 130px !important;
+    padding-top: 160px !important;
 }
 
 /* --- Enhanced Mobile UI Optimizations --- */
@@ -2582,8 +2583,8 @@ body {
   .contact-modal__primary.btn.btn-inline {
     width: auto !important;
   }
-  .cart-drawer, .contact-modal, .checkout-modal { width: 100vw !important; z-index: 10000 !important; }
-  .cart-overlay, .modal-overlay { z-index: 9999 !important; }
+  .cart-drawer, .contact-modal, .checkout-modal { width: 100vw !important; z-index: 10005 !important; }
+  .cart-overlay, .modal-overlay { z-index: 10004 !important; }
 
   /* Mobile App-Like Dropdown Menu Fix */
   .mobile-overlay {
