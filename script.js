@@ -1101,21 +1101,22 @@ function bindUI() {
     const chipsContainer = contactForm.querySelector('.js-inquiry-chips');
     if (chipsContainer) {
       chipsContainer.addEventListener('click', (event) => {
-        const chip = event.target?.closest?.('.inquiry-chip');
+        const chip = event.target?.closest('.pro-chip');
         if (!chip || !chipsContainer.contains(chip)) return;
 
-        const isPressed = chip.getAttribute('aria-pressed') === 'true';
-        chip.setAttribute('aria-pressed', isPressed ? 'false' : 'true');
+        const isActive = chip.classList.contains('is-active');
+        chip.classList.toggle('is-active');
+        chip.setAttribute('aria-pressed', isActive ? 'false' : 'true');
       });
     }
 
     contactForm.addEventListener('submit', (event) => {
       event.preventDefault();
 
-      const name = contactForm.querySelector('input[type="text"]')?.value?.trim() ?? '';
-      const message = contactForm.querySelector('textarea')?.value?.trim() ?? '';
+      const name = contactForm.querySelector('#contact-name')?.value?.trim() ?? '';
+      const message = contactForm.querySelector('#contact-message')?.value?.trim() ?? '';
 
-      const inquiries = Array.from(contactForm.querySelectorAll('.inquiry-chip[aria-pressed="true"]'))
+      const inquiries = Array.from(contactForm.querySelectorAll('.pro-chip.is-active'))
         .map((el) => String(el.dataset.value ?? el.textContent ?? '').trim())
         .filter(Boolean);
 
@@ -1441,4 +1442,237 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initWhatsAppCheckoutLinks();
   initSmoothScrollAnchors();
+  
+  // New Luxe Interactions
+  initLuxeScroll();
+  initMagneticButtons();
+  initLuxeReveal();
+
+  document.body.classList.add('is-loaded');
+  setTimeout(() => document.body.classList.add('is-ready'), 100);
 });
+
+// --- Premium Luxe Interactions ---
+
+function initLuxeScroll() {
+  const body = document.body;
+  const scrollThreshold = 80;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > scrollThreshold) {
+      body.classList.add('is-scrolled');
+    } else {
+      body.classList.remove('is-scrolled');
+    }
+  }, { passive: true });
+}
+
+function initMagneticButtons() {
+  if (window.innerWidth < 1024) return;
+  const buttons = document.querySelectorAll('.magnetic-btn');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0, 0)';
+    });
+  });
+}
+
+function initLuxeReveal() {
+  const reveals = document.querySelectorAll('.stagger-up');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+}
+
+/* --- Policy Modal System --- */
+function initPolicyModals() {
+  const triggers = document.querySelectorAll('.js-policy-trigger');
+  if (!triggers.length) return;
+
+  let overlay = document.querySelector('.js-policy-modal-overlay');
+  
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'modal-overlay js-policy-modal-overlay';
+    overlay.hidden = true;
+    document.body.appendChild(overlay);
+  }
+
+  function ensurePolicyModal() {
+    let modal = document.querySelector('.js-policy-modal');
+    if (modal) return modal;
+
+    modal = document.createElement('div');
+    modal.className = 'policy-modal js-policy-modal';
+    modal.innerHTML = `
+      <div class="policy-modal__header">
+        <h3 class="policy-modal__title js-policy-title">Policy</h3>
+        <button class="policy-modal__close js-policy-close">✕</button>
+      </div>
+      <div class="policy-modal__body js-policy-body"></div>
+    `;
+    document.body.appendChild(modal);
+
+    const closeBtn = modal.querySelector('.js-policy-close');
+    closeBtn.addEventListener('click', () => closePolicyModal());
+    overlay.addEventListener('click', () => closePolicyModal());
+    
+    return modal;
+  }
+
+  const shippingContent = `
+    <div class="shipping-pro-grid">
+      <div class="shipping-card">
+        <span class="shipping-card__icon">🚀</span>
+        <span class="shipping-card__title">Standard Dispatch</span>
+        <p class="shipping-card__value">Same Day</p>
+      </div>
+      <div class="shipping-card">
+        <span class="shipping-card__icon">✨</span>
+        <span class="shipping-card__title">Customized Art</span>
+        <p class="shipping-card__value">2-5 Working Days</p>
+      </div>
+      <div class="shipping-card">
+        <span class="shipping-card__icon">📅</span>
+        <span class="shipping-card__title">Estimated Delivery</span>
+        <p class="shipping-card__value">2-5 Days post dispatch</p>
+      </div>
+      <div class="shipping-partners">
+        <span>Trusted Partners:</span>
+        <div class="partner-tag">Blue Dart</div>
+        <div class="partner-tag">Delhivery</div>
+      </div>
+    </div>
+  `;
+
+  const returnsContent = `
+    <div class="shipping-pro-grid">
+      <div class="shipping-card">
+        <span class="shipping-card__icon">📹</span>
+        <span class="shipping-card__title">Mandatory</span>
+        <p class="shipping-card__value">Unboxing Video required for all claims</p>
+      </div>
+      <div class="shipping-card">
+        <span class="shipping-card__icon">⏱️</span>
+        <span class="shipping-card__title">Window</span>
+        <p class="shipping-card__value">Report within 48 hours of delivery</p>
+      </div>
+      <div class="shipping-card">
+        <span class="shipping-card__icon">🎨</span>
+        <span class="shipping-card__title">Custom Art</span>
+        <p class="shipping-card__value">No returns on customized orders</p>
+      </div>
+      <div class="shipping-partners">
+        <span>Assistance:</span>
+        <p style="font-size: 14px; color: var(--text-main); font-weight: 500;">Contact us on WhatsApp for order issues.</p>
+      </div>
+    </div>
+  `;
+
+  function openPolicyModal(type) {
+    const modal = ensurePolicyModal();
+    const title = modal.querySelector('.js-policy-title');
+    const body = modal.querySelector('.js-policy-body');
+
+    if (type === 'shipping') {
+      title.textContent = 'Shipping & Delivery';
+      body.innerHTML = shippingContent;
+    } else if (type === 'returns') {
+      title.textContent = 'Returns & Exchanges';
+      body.innerHTML = returnsContent;
+    }
+
+    overlay.hidden = false;
+    overlay.style.opacity = '1';
+    overlay.style.visibility = 'visible';
+    modal.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePolicyModal() {
+    const modal = document.querySelector('.js-policy-modal');
+    if (!modal) return;
+    modal.classList.remove('is-active');
+    overlay.style.opacity = '0';
+    overlay.style.visibility = 'hidden';
+    setTimeout(() => {
+      overlay.hidden = true;
+      document.body.style.overflow = '';
+    }, 500);
+  }
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const type = trigger.dataset.policy;
+      openPolicyModal(type);
+    });
+  });
+}
+
+// Add to main DOMContentLoaded at line 1422 or append here safely
+document.addEventListener('DOMContentLoaded', () => {
+  initPolicyModals();
+  initNewsletter();
+});
+
+/* --- Newsletter Subscription --- */
+function initNewsletter() {
+  const forms = document.querySelectorAll('.pro-newsletter');
+  
+  forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = form.querySelector('input');
+      const btn = form.querySelector('button');
+      const email = input.value.trim();
+
+      if (!email) return;
+
+      // Pro state: Loading
+      const originalText = btn.textContent;
+      btn.innerHTML = '<span class="loading-dot"></span>';
+      btn.disabled = true;
+      input.disabled = true;
+
+      // Simulate Backend Registration
+      console.log(`Backend Action: Registering ${email}`);
+      console.log(`Backend Action: Sending WhatsApp notification to admin`);
+
+      setTimeout(() => {
+        // Success state
+        btn.innerHTML = '✓';
+        btn.style.background = '#25D366'; // WhatsApp Green
+        btn.style.color = '#fff';
+        
+        showToast('Welcome to the Inner Circle! ✨');
+
+        // Reset after a delay
+        setTimeout(() => {
+          form.reset();
+          btn.innerHTML = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.disabled = false;
+          input.disabled = false;
+        }, 3000);
+      }, 1500);
+    });
+  });
+}

@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amber Trinkets | Categories</title>
-    <link rel="icon" type="image/png" href="https://res.cloudinary.com/djqnqrth5/image/upload/v1775493597/Gemini_Generated_Image_m9866qm9866qm986_qaqjsb.png">
+    <link rel="icon" type="image/png"
+        href="https://res.cloudinary.com/djqnqrth5/image/upload/v1775493597/Gemini_Generated_Image_m9866qm9866qm986_qaqjsb.png">
 
     <meta name="description"
         content="Shop Amber Trinkets by category—jhumkas, bracelets, keychains, jewellery, and candles. Handcrafted resin pieces with preserved details." />
     <meta name="robots" content="index,follow" />
-    <meta name="theme-color" content="#fcfafb" />
+    <meta name="theme-color" content="#fdfbf7" />
     <meta name="author" content="Amber Trinkets" />
 
     <meta property="og:site_name" content="Amber Trinkets" />
@@ -31,7 +32,7 @@
         content="https://res.cloudinary.com/djqnqrth5/image/upload/v1775131859/IMG_1232_u1fcdn.jpg" />
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css?v=20260402">
@@ -41,12 +42,16 @@
     <!-- Global Liquid Resin Filter -->
     <svg width="0" height="0" class="liquid-resin-svg" style="position:absolute;z-index:-1;pointer-events:none;">
         <filter id="liquid-resin">
-            <feTurbulence id="resin-turbulence" type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="3" result="NOISE"></feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="0" xChannelSelector="R" yChannelSelector="G" id="resin-displacement"></feDisplacementMap>
+            <feTurbulence id="resin-turbulence" type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="3"
+                result="NOISE"></feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="0" xChannelSelector="R" yChannelSelector="G"
+                id="resin-displacement"></feDisplacementMap>
         </filter>
         <filter id="liquid-ambient">
-            <feTurbulence id="ambient-turbulence" type="fractalNoise" baseFrequency="0.005 0.008" numOctaves="2" result="NOISE"></feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="80" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+            <feTurbulence id="ambient-turbulence" type="fractalNoise" baseFrequency="0.005 0.008" numOctaves="2"
+                result="NOISE"></feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="80" xChannelSelector="R" yChannelSelector="G">
+            </feDisplacementMap>
         </filter>
     </svg>
 
@@ -58,7 +63,9 @@
     </div>
 
     <nav>
-        <a href="index.html" class="brand-logo"><img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775493597/Gemini_Generated_Image_m9866qm9866qm986_qaqjsb.png" alt="Amber Trinkets Logo" class="logo-img">Amber Trinkets</a>
+        <a href="index.html" class="brand-logo"><img
+                src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775493597/Gemini_Generated_Image_m9866qm9866qm986_qaqjsb.png"
+                alt="Amber Trinkets Logo" class="logo-img">Amber Trinkets</a>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="collection.html">Collection</a>
@@ -96,74 +103,117 @@
         </div>
     </div>
 
-    <header class="page-header">
-        <h1>Shop by Category</h1>
-        <p>Select a collection to explore our hand-poured pieces.</p>
+    <header class="page-header stagger-up">
+        <h1 class="hero-luxe__title">The <span class="hero-luxe__title--italic">Gallery</span></h1>
+        <p class="hero-luxe__desc" style="margin: 0 auto;">Select a category to explore our meticulously preserved
+            floral resin art pieces.</p>
     </header>
 
-    <section class="categories-container">
-        <div class="categories-grid u-3d-stage">
-
-            <a href="category-jhumkas.html" class="category-card">
-                <div class="category-image-wrapper u-3d-card js-tilt" aria-label="Jhumkas category">
-                    <div class="category-image">
-                        <img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775131859/IMG_1232_u1fcdn.jpg"
-                            alt="Jhumkas" loading="lazy" decoding="async" style="display: block;">
-                    </div>
+    <section class="editorial-categories">
+        <div class="categories-editorial-grid">
+            <a href="category-jhumkas.html" class="category-editorial-card stagger-up">
+                <div class="category-editorial-card__image">
+                    <img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775131859/IMG_1232_u1fcdn.jpg"
+                        alt="Jhumkas">
                 </div>
-                <h3 class="category-title">Jhumkas</h3>
-                <p class="shop-now-text">Shop Now &rarr;</p>
-            </a>
-
-            <a href="category-bracelets.html" class="category-card">
-                <div class="category-image-wrapper u-3d-card js-tilt" aria-label="Bracelets category">
-                    <div class="category-image">
-                        <img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775125783/IMG_1224_fxmjfs.jpg"
-                            alt="Bracelets" loading="lazy" decoding="async" style="display: block;">
-                    </div>
+                <div class="category-editorial-card__body">
+                    <h3>Jhumkas</h3>
+                    <span class="btn-link">Explore &rarr;</span>
                 </div>
-                <h3 class="category-title">Bracelets</h3>
-                <p class="shop-now-text">Shop Now &rarr;</p>
             </a>
-
-            <a href="category-keychains.html" class="category-card">
-                <div class="category-image-wrapper u-3d-card js-tilt" aria-label="Keychains category">
-                    <div class="category-image">
-                        <img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775133340/Gemini_Generated_Image_hzdo7mhzdo7mhzdo_cwdzr7.png"
-                            alt="Keychains" loading="lazy" decoding="async" style="display: block;">
-                    </div>
+            <a href="category-bracelets.html" class="category-editorial-card stagger-up" style="--delay: 0.1s;">
+                <div class="category-editorial-card__image">
+                    <img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775125783/IMG_1224_fxmjfs.jpg"
+                        alt="Bracelets">
                 </div>
-                <h3 class="category-title">Keychains</h3>
-                <p class="shop-now-text">Shop Now &rarr;</p>
-            </a>
-
-            <a href="category-jewellery.html" class="category-card">
-                <div class="category-image-wrapper u-3d-card js-tilt" aria-label="Jewellery category">
-                    <div class="category-image">
-                        <img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775387128/main_jewellery_1775370895915_kg8bkj.jpg"
-                            alt="Jewellery" loading="lazy" decoding="async" style="display: block;">
-                    </div>
+                <div class="category-editorial-card__body">
+                    <h3>Bracelets</h3>
+                    <span class="btn-link">Explore &rarr;</span>
                 </div>
-                <h3 class="category-title">Jewellery</h3>
-                <p class="shop-now-text">Shop Now &rarr;</p>
             </a>
-
-            <a href="category-candles.html" class="category-card">
-                <div class="category-image-wrapper u-3d-card js-tilt" aria-label="Candles category">
-                    <div class="category-image">
-                        <img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775128937/IMG_1229_m6vomg.jpg"
-                            alt="Candles" loading="lazy" decoding="async" style="display: block;">
-                    </div>
+            <a href="category-keychains.html" class="category-editorial-card stagger-up" style="--delay: 0.2s;">
+                <div class="category-editorial-card__image">
+                    <img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775133340/Gemini_Generated_Image_hzdo7mhzdo7mhzdo_cwdzr7.png"
+                        alt="Keychains">
                 </div>
-                <h3 class="category-title">Candles</h3>
-                <p class="shop-now-text">Shop Now &rarr;</p>
+                <div class="category-editorial-card__body">
+                    <h3>Keychains</h3>
+                    <span class="btn-link">Explore &rarr;</span>
+                </div>
             </a>
-
+            <a href="category-jewellery.html" class="category-editorial-card stagger-up" style="--delay: 0.3s;">
+                <div class="category-editorial-card__image">
+                    <img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775387128/main_jewellery_1775370895915_kg8bkj.jpg"
+                        alt="Jewellery">
+                </div>
+                <div class="category-editorial-card__body">
+                    <h3>Jewellery</h3>
+                    <span class="btn-link">Explore &rarr;</span>
+                </div>
+            </a>
+            <a href="category-candles.html" class="category-editorial-card stagger-up" style="--delay: 0.4s;">
+                <div class="category-editorial-card__image">
+                    <img src="https://res.cloudinary.com/djqnqrth5/image/upload/v1775128937/IMG_1229_m6vomg.jpg"
+                        alt="Candles">
+                </div>
+                <div class="category-editorial-card__body">
+                    <h3>Candles</h3>
+                    <span class="btn-link">Explore &rarr;</span>
+                </div>
+            </a>
         </div>
     </section>
 
-    <footer class="with-border">
-        <p>&copy; 2026 Amber Trinkets. All rights reserved.</p>
+    <footer class="pro-footer">
+        <div class="pro-footer__top">
+            <div class="pro-footer__brand">
+                <a href="index.html" class="pro-footer__logo">Amber Trinkets</a>
+                <p class="pro-footer__tagline">Preserving nature's ephemeral beauty in crystal-clear resin art. Handcrafted with heart in India.</p>
+                
+                <div class="pro-newsletter-box">
+                    <span class="pro-newsletter-title">Join the Inner Circle</span>
+                    <form class="pro-newsletter">
+                        <input type="email" placeholder="Email Address" required>
+                        <button type="submit">Join</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="pro-footer__nav">
+                <span class="pro-footer__nav-title">Shop</span>
+                <ul>
+                    <li><a href="category-jhumkas.html">Jhumkas</a></li>
+                    <li><a href="category-bracelets.html">Bracelets</a></li>
+                    <li><a href="category-keychains.html">Keychains</a></li>
+                    <li><a href="category-candles.html">Candles</a></li>
+                </ul>
+            </div>
+            
+            <div class="pro-footer__nav">
+                <span class="pro-footer__nav-title">Studio</span>
+                <ul>
+                    <li><a href="#our-exclusive">Exclusives</a></li>
+                    <li><a href="index.html#contact">Custom Inquiries</a></li>
+                </ul>
+            </div>
+            
+            <div class="pro-footer__nav">
+                <span class="pro-footer__nav-title">Support</span>
+                <ul>
+                    <li><a href="#" class="js-policy-trigger" data-policy="shipping">Shipping Policy</a></li>
+                    <li><a href="#" class="js-policy-trigger" data-policy="returns">Returns</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="pro-footer__bottom">
+            <p>&copy; 2026 Amber Trinkets. All rights reserved.</p>
+            <div class="pro-footer__socials">
+                <a href="#" target="_blank" rel="noopener">Instagram</a>
+                <a href="#" target="_blank" rel="noopener">Pinterest</a>
+                <a href="#" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js?v=20260402"></script>
