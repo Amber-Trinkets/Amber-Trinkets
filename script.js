@@ -535,7 +535,7 @@ function init3DTilt() {
 }
 
 function initHeroParallax() {
-  const hero = document.querySelector('.hero');
+  const hero = document.querySelector('.hero-luxe');
   if (!hero) return;
 
   const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
@@ -1315,7 +1315,7 @@ function initCustomCursor() {
 }
 
 function initHeroSparkles() {
-  const heroBg = document.querySelector('.hero__bg');
+  const heroBg = document.querySelector('.hero-luxe__bg');
   if (!heroBg) return;
 
   const isLite = document.body.classList.contains('perf-lite');

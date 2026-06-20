@@ -20,6 +20,16 @@
   /* Layout */
   --container-width: 1440px;
   --section-spacing: 120px;
+
+  /* Pastel Colors for tags/buttons */
+  --pastel-rose: #f7bacb;
+  --pastel-lilac: #d3c4e3;
+  --pastel-mint: #c6e3d4;
+  --pastel-peach: #f5d0b5;
+  --pastel-blue: #bfe1f6;
+  
+  /* 3D Tilt perspective */
+  --tilt-perspective: 1000px;
 }
 
 * {
@@ -2504,6 +2514,8 @@ body.has-custom-cursor * {
 body.is-loaded #awwwards-preloader {
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   pointer-events: none;
+  visibility: hidden;
+  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), visibility 0s linear 1.2s;
 }
 
 .preloader-text {
@@ -2798,10 +2810,9 @@ body {
 /* --- Enhanced Mobile UI Optimizations --- */
 @media (max-width: 768px) {
 
-  html,
   body {
     overflow-x: hidden;
-    width: 100vw;
+    max-width: 100%;
   }
 
   nav {
@@ -3005,11 +3016,7 @@ body {
     -webkit-tap-highlight-color: transparent !important;
   }
 
-  html,
-  body {
-    overscroll-behavior-y: none;
-    /* Stops bouncy browser chrome revealing */
-  }
+  /* Removed overscroll-behavior-y to fix Android touch scroll bug */
 
   .cart-drawer {
     border-radius: 0 !important;
