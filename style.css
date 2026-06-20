@@ -3466,12 +3466,8 @@ body {
   }
   
   .pro-footer__top {
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 60px;
-  }
-  
-  .pro-footer__top > div:last-child {
-    display: none;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
   }
 }
 
@@ -3492,7 +3488,7 @@ body {
   
   .pro-footer__top {
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 50px;
   }
   
   .pro-footer__brand {
