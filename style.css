@@ -3530,6 +3530,8 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .policy-modal.is-active {
@@ -3639,6 +3641,7 @@ body {
   
   .policy-modal {
     padding: 32px 24px;
+    max-height: 85vh;
   }
 }
 
